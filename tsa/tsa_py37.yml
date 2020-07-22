@@ -1,4 +1,4 @@
-name: tsa_course
+name: tsa_py37
 channels:
   - defaults
 dependencies:
