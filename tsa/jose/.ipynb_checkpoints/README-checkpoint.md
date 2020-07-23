@@ -11,10 +11,10 @@
 
 <font color="yellow">__Others:__</font><br>
 
-- $y_{i}$: **real value** of the test data
-- $\hat y_{i}$: **Predicted value** from our forecast
+- y<sub>i</sub> : **Real value** of the test data
+- ŷ<sub>i</sub> : **Predicted value** from our forecast
 
-> here, $y-\hat y_{i}$ is the ***residual component***
+> here, e<sub>t</sub> = y<sub>i</sub> - ŷ<sub>i</sub> is the ***residual component***
 
 <br> <br> 
 <b> Mean Squared Error </b>: $ \frac{1}{n} \sum_{i=1}^n (y_{i} - \hat y_{i})^2 $
