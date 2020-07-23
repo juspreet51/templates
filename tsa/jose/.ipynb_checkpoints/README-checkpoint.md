@@ -9,6 +9,36 @@
 <font color="green">__GMRAE:__</font> Geometric Mean Relative Absolute Error <br>
 <font color="green">__MASE:__</font> Mean Absolute Scaled Error <br>
 
+<font color="yellow">__Others:__</font><br>
+
+- $y_{i}$: **real value** of the test data
+- $\hat y_{i}$: **Predicted value** from our forecast
+
+> here, $y-\hat y_{i}$ is the ***residual component***
+
+<br> <br> 
+<b> Mean Squared Error </b>: $ \frac{1}{n} \sum_{i=1}^n (y_{i} - \hat y_{i})^2 $
+
+<b> Root Mean Squared Error </b>:
+$\sqrt{\frac{1}{n} \sum_{i=1}^n (y_{i} - \hat y_{i})^2}$
+
+<b>Mean Absolute Error</b>:
+$ \frac{1}{n} \sum_{i=1}^n | y_{i} - \hat y_{i} | $
+
+<b> Mean Absolute Percentage Error </b>: 
+$ \frac{1}{n} \sum_{i=1}^n \left\lvert{\frac{y_{i}-\hat y}{y_{i}}}\right\rvert $ or 
+$ \frac{1}{n} \sum_{i=1}^n \left\lvert{\frac{Act_{i}- F_{i}}{Act_{i}}}\right\rvert $
+
+<b>$R^2$ Squared</b>: How fit is the curve
+
+___python libs import___:
+```
+from sklearn.metrics import mean_absolute_error, median_absolute_error, mean_squared_error,r2_score
+```
+
+__Detailed explanation and Formulas in [Notebook](https://github.com/juspreet51/templates/blob/master/tsa/jose/08_General%20Forecasting%20Models/TSA_Evaluation_Metrics.ipynb) and [Blog](https://medium.com/@joydeepubuntu/common-metrics-for-time-series-analysis-f3ca4b29fe42)__
+___
+
 <font color="yellow">Let Y<sub>t</sub> denote the observation at time t and F<sub>t</sub> denote the forecast of Y<sub>t</sub>. Then define the forecast error e<sub>t</sub> =Y<sub>t</sub> - F<sub>t</sub></font>
 
 ## Scale-dependent measures
