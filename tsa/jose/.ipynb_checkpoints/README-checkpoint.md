@@ -1,25 +1,30 @@
-# Templates
-Collection of notebooks, code templates and other usefull resources collated during learning (with the seasoning of some really awkward and funny comments and rants)
+# [Another look at measures of forecast accuracy- Rob J.Hyndman and Anne B.Koehlerb1](https://www.sciencedirect.com/science/article/abs/pii/S0169207006000239)
 
-## Conda Environment Creation and Exporting
-```
-> conda info
-> conda update conda
-> conda install PACKAGENAME 
-> conda update PACKAGENAME 
+## <font color="yellow">Types of Validation Procedures</font>
+<font color="green">__MAPE:__</font> Mean Absolute Percentage Error <br>
+<font color="green">__MdAPE:__</font> Median Absolute Percentage Error <br>
+<font color="green">__sMAPE:__</font> Symmetric Mean Absolute Percentage Error <br>
+<font color="green">__sMdAPE:__</font> Symmetric Median Absolute Percentage Error <br>
+<font color="green">__MdRAE:__</font> Median Relative Absolute Error <br>
+<font color="green">__GMRAE:__</font> Geometric Mean Relative Absolute Error <br>
+<font color="green">__MASE:__</font> Mean Absolute Scaled Error <br>
 
-> conda create --name ENVNAME python=3.6   # Here new environment is named ENVNAME, install Python 3.6
-> conda create --clone ENVNAME --name NEWENV # Exact copy of existing environment
-> conda env list 
-> conda list --name ENVNAME
-> conda activate env_name
+<font color="yellow">Let $Y_{t}$ denote the observation at time t and $F_{t}$ denote the forecast of $Y_{t}$. Then define the forecast error $e_{t}$ =$Y_{t}$ - $F_{t}$</font>
 
-> conda env export --name ENVNAME > envname.yml
-> conda env create --file envname.ym
-> conda env create # Create an environment from the file named environment.yml in the current director
+## Scale-dependent measures
+- <font color="green">__Mean Square Error (MSE)__</font> = mean($e_{t}^2$) <br>
+- <font color="green">__Root Mean Square (RMSE)__</font> =√MSE <br>
+- <font color="green">__Mean Absolute Error (MAE)__</font> = mean(|$e_{t}$|) <br>
+- <font color="green">__Median Absolute Error__</font> = median(|$e_{t}$|)  <br>
 
-> conda remove --name ENVNAME --all # Delete an entire environment
-```
-### Setting a DatetimeIndex Frequency
-> Most of the TSA will require you to make sure your index col (most of the time it will be a sequential timestamp) to be in its correct frequency or offset alias<br>
-A full list of time series offset aliases can be found in the <a href='http://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases'>official doc</a>.
+## Measures based on percentage errors
+The percentage error is given by: $p_{t}$ = 100*$e_{t}/y_{t}$
+- <font color="green">__MAPE__</font> = mean($p_{t}$)
+- <font color="green">__MdAPE__</font> = median($p_{t}$)
+- <font color="green">__RMPSE__</font> = √(mean($p_{t}^2$))
+- <font color="green">__RMdPSE__</font> = √(median($p_{t}^2$)) 
+
+## Measures based on relative errors
+- <font color="green">__Mean Relative Absolute Error (MRAE)__</font> = mean(|$r_{t}$|)
+- <font color="green">__Median Relative Absolute Error (MdRAE)__</font> = median(|rt |)
+- <font color="green">__Geometric Mean Relative Absolute Error (GMRAE)__</font> = gmean(|rt |)
