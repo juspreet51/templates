@@ -17,13 +17,13 @@
 > here, e<sub>t</sub> = y<sub>i</sub> - ŷ<sub>i</sub> is the ***residual component***
 
 <br> <br> 
-<b> Mean Squared Error </b>: $ \frac{1}{n} \sum_{i=1}^n (y_{i} - \hat y_{i})^2 $
+<b> Mean Squared Error </b>: $ \frac{1}{n} \sum_{i=1}^n$ (y<sub>i</sub> - ŷ<sub>i</sub>$)^2 $
 
 <b> Root Mean Squared Error </b>:
 $\sqrt{\frac{1}{n} \sum_{i=1}^n (y_{i} - \hat y_{i})^2}$
 
 <b>Mean Absolute Error</b>:
-$ \frac{1}{n} \sum_{i=1}^n | y_{i} - \hat y_{i} | $
+$ \frac{1}{n} \sum_{i=1}^n$ | y<sub>i</sub> - ŷ<sub>i</sub> |
 
 <b> Mean Absolute Percentage Error </b>: 
 $ \frac{1}{n} \sum_{i=1}^n \left\lvert{\frac{y_{i}-\hat y}{y_{i}}}\right\rvert $ or 
