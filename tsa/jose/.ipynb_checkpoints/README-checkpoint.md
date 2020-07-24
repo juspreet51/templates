@@ -41,25 +41,25 @@ ___
 
 <font color="yellow">Let Y<sub>t</sub> denote the observation at time t and F<sub>t</sub> denote the forecast of Y<sub>t</sub>. Then define the forecast error e<sub>t</sub> =Y<sub>t</sub> - F<sub>t</sub></font>
 
-## Scale-dependent measures
+## <font color="purple"><ins>Scale-dependent measures</ins></font>
 - <font color="green">__Mean Square Error (MSE)__</font> = mean(e<sub>t</sub><sup>2</sup>) <br>
 - <font color="green">__Root Mean Square (RMSE)__</font> =√MSE <br>
 - <font color="green">__Mean Absolute Error (MAE)__</font> = mean(|e<sub>t</sub>|) <br>
 - <font color="green">__Median Absolute Error__</font> = median(|e<sub>t</sub>|)  <br>
 
-## Measures based on percentage errors
+## <font color="purple"><ins>Measures based on percentage errors</ins></font>
 The percentage error is given by: $p_{t}$ = 100*$e_{t}/y_{t}$
 - <font color="green">__MAPE__</font> = mean(p<sub>t</sub>)
 - <font color="green">__MdAPE__</font> = median(p<sub>t</sub>)
 - <font color="green">__RMPSE__</font> = √(mean(p<sub>t</sub><sup>2</sup>))
 - <font color="green">__RMdPSE__</font> = √(median(p<sub>t</sub><sup>2</sup>)) 
 
-## Measures based on relative errors
+## <font color="purple"><ins>Measures based on relative errors</ins></font>
 - <font color="green">__Mean Relative Absolute Error (MRAE)__</font> = mean(|r<sub>t</sub>|)
 - <font color="green">__Median Relative Absolute Error (MdRAE)__</font> = median(|r<sub>t</sub>|)
 - <font color="green">__Geometric Mean Relative Absolute Error (GMRAE)__</font> = gmean(|r<sub>t</sub>|)
 
-## Scaled errors
+## <font color="purple"><ins>Scaled errors</ins></font>
 ### <font color="orange">Scaled error</font> is define as:  q<sub>t</sub> = $\frac {e_{t}}{ \frac{1}{n-1} \sum_{i=2}^n |Y_{i}-Y_{i-1}| } $
 - <font color="green">__Mean Absolute Scaled Error (MASE)__</font> = mean(|qt |)
 - <font color="green">__Mean Scaled Error (MSE)__</font> = mean(qt)
@@ -67,3 +67,93 @@ The percentage error is given by: $p_{t}$ = 100*$e_{t}/y_{t}$
 - <font color="green">__RMSSE__</font> = √MSE
  
 for more detail, refer to the [paper](https://www.sciencedirect.com/science/article/abs/pii/S0169207006000239)
+
+___
+# <font color="purple">__<ins>Python Model Validation Metrics</ins>:__</font>
+```python
+from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
+from statsmodels.tools.eval_measures import rmse
+
+test_dataset_mean =  round(test_dataset.sales.mean(),2); print(f'Test\'s Mean:{test_dataset_mean}')
+
+error_mae = round(mean_absolute_error(test_dataset, predictions),2)
+print(f'MAE Error: {error_mae}')
+
+error_mse = mean_squared_error(test_dataset, predictions)
+error_rmse = round(np.sqrt(error_mse),2)
+print(f'RMSE Error: {error_rmse}')
+
+r2_score_val = round(r2_score(test_dataset, predictions),2)
+print(f'R Sq value: {r2_score_val}')
+
+def mean_absolute_percentage_error(y_true, y_pred):
+    y_true, y_pred = np.array(y_true), np.array(y_pred)
+    return np.mean(np.abs((y_true - y_pred) / y_true)) * 100
+
+mape_val = mean_absolute_percentage_error(test_dataset, predictions)
+print(f'Mape Value: {mape_val}')
+```
+<br> <br>
+___
+# <font color="purple">__<ins>Outlier Detection and Treatment</ins>:__</font>
+<font color="yellow">__Method1: Identification and removal of outliers__</font>
+```python
+Q1 = input_df['sum_gmv'].quantile(0.25)
+Q3 = input_df['sum_gmv'].quantile(0.75)
+IQR = Q3 - Q1
+
+input_df_treated = input_df[~((input_df < (Q1 - 1.5 * IQR)) |(input_df > (Q3 + 1.5 * IQR))).any(axis=1)]
+input_df_treated.head()
+```
+
+
+<font color="yellow">__Method2__: Identification of the indices of outliers and thier imputation<br></font>
+___2.1)Outlier Detection___ <br>
+- Calculate Q1 ( the first Quarter) <br>
+- Calculate Q3 ( the third Quartile) <br>
+- Find IQR = (Q3 - Q1) <br>
+- Find the lower Range = Q1 -(1.5 * IQR) <br>
+- Find the upper Range = Q3 + (1.5 * IQR) <br>
+
+```python
+def outlier_detection(datacolumn):
+    sorted(datacolumn)
+    Q1,Q3 = np.percentile(datacolumn , [25,75])
+    IQR = Q3 - Q1
+    lower_range = Q1 - (1.5 * IQR)
+    upper_range = Q3 + (1.5 * IQR)
+    
+    return lower_range,upper_range
+
+lowerbound,upperbound = outlier_detection(input_df_raw['sales'])
+
+outliers = input_df_raw[(input_df_raw['sales'] < lowerbound) | (input_df_raw['sales'] > upperbound)]
+print(outliers)
+```
+
+___2.2)Outlier Treatment___ <br>
+We have identified the Outliers in the above give indexes  <br>
+Since we can remove any data point, as it will create an absentia in the time-series, we will impute the outliers 
+Our choice of imputation will be knn-Imputer as it assigns nulls/nan with the closest knn  <br>
+
+```python
+# making outliers as NaN so that they can be treated by KNN Imputer
+input_df = input_df_raw.copy()
+input_df.loc[outliers.index, 'sales']=np.nan
+input_df
+
+from sklearn.impute import SimpleImputer
+
+impNumeric = SimpleImputer(missing_values=np.nan, strategy='mean')
+impCategorical = SimpleImputer(missing_values=np.nan, strategy='most_frequent')
+
+# Fitting the data to the imputer object 
+impNumeric = impNumeric.fit(input_df[['sales']])
+  
+# Imputing the data      
+input_df['sales'] = impNumeric.transform(input_df[['sales']])
+input_df
+
+input_df.boxplot(column=['sales']);
+```
+
