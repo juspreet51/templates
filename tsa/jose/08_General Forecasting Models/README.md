@@ -1,6 +1,6 @@
 ___
 # General Forecasting Models
-> *TSA [Evaluation Metrics](juspreet51/templates/blob/master/tsa/jose/TSA_Evaluation_Metrics.ipnyb)* and [Detailed Explanation](https://medium.com/@joydeepubuntu/common-metrics-for-time-series-analysis-f3ca4b29fe42) <br>
+> *TSA [Evaluation Metrics](juspreet51/templates/blob/master/tsa/jose/TSA_Evaluation_Metrics.ipynb)* and [Detailed Explanation](https://medium.com/@joydeepubuntu/common-metrics-for-time-series-analysis-f3ca4b29fe42) <br>
 > *ARMA [Family](https://github.com/juspreet51/templates/tree/master/TSA_Jose/08_General%20Forecasting%20Models) Models* <br>
 ____
 
