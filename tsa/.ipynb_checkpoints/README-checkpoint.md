@@ -47,10 +47,10 @@ def adf_test(series,title=''):
 ## <font color="purple"><b><ins>Auto Arima:</ins></b></font>
 # Choosing ARIMA Orders : Auto-Arima
 > _p_ is the order of the AR model, i.e. number of lags included in the model
-<br>
 > _d_ is the degree of Differencing, i.e. number of time data had its past value subtracted/differenced
+> _q_ is the order of the Moving Average, i.e. size of the MA window
+
 <br>
-> *q* is the order of the Moving Average, i.e. size of the MA window
 
 The main priority of this step is to pick the order of AR and MA compnonent, and then I order if required. It can be done by two ways:
 - **Manually via ACF-PACF plots**: If the AC plots shows +ve Auto-Correlation at the very first lag, then it usggests to us AR terms in relation to lags, MA terms for -ve Auto-Correlation
@@ -88,8 +88,8 @@ A full list of time series offset aliases can be found in the <a href='http://pa
 
 ___
 # <font color="purple">__<ins>Outlier Detection and Treatment</ins>:__</font>
-- Interquartile Range Method
-- Automatic Outlier Detection
+### __1) Interquartile Range Method__
+### __2) Automatic Outlier Detection__
 
 ### <font color="yellow">__Method1: Interquartile Range Method__</font>
 - Calculate Q1 ( the first Quarter) <br>
@@ -98,7 +98,9 @@ ___
 - Find the lower Range = Q1 -(1.5 * IQR) <br>
 - Find the upper Range = Q3 + (1.5 * IQR) <br>
 
-#### <font color="Red">__1.1)Identification and Removal__</font>
+#### <font color="Red">__1.1)Outlier Identification and Removal__</font>
+<details><summary>View</summary>
+
 ```python
 Q1 = input_df['sum_gmv'].quantile(0.25)
 Q3 = input_df['sum_gmv'].quantile(0.75)
@@ -108,8 +110,15 @@ input_df_treated = input_df[~((input_df < (Q1 - 1.5 * IQR)) |(input_df > (Q3 + 1
 input_df_treated.head()
 ```
 
+</details>
+
+
+
 
 #### <font color="Red">__1.2)Outlier Identification and Imputation__</font>
+
+<details><summary>View</summary>
+
 <font color="teal">__1.2.1)Identification__</font> <br>
 ```python
 def outlier_detection(datacolumn):
@@ -151,6 +160,11 @@ input_df
 
 input_df.boxplot(column=['sales']);
 ```
+
+</details>
+
+
+
 
 ### <font color="yellow">__Method2:Automatic Outlier Detection__</font>
 <font color="teal">__2.1)Isolation Forest__</font> <br>
