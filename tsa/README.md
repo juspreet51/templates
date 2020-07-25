@@ -168,10 +168,8 @@ yhat = ee.fit_predict(X_train)
 mask = yhat != -1
 X_train, y_train = X_train[mask, :], y_train[mask]
 ```
-<br><br>
 
 > __COMPLETE CODE__
-
 ```python
 # evaluate model performance with outliers removed using elliptical envelope
 from pandas import read_csv
@@ -219,10 +217,8 @@ print('MAE: %.3f' % mae)
 ee = OneClassSVM(nu=0.01)
 yhat = ee.fit_predict(X_train)
 ```
-<br><br>
 
 > __COMPLETE CODE__
-
 ```python
 # evaluate model performance with outliers removed using one class SVM
 from pandas import read_csv
@@ -258,5 +254,4 @@ yhat = model.predict(X_test)
 mae = mean_absolute_error(y_test, yhat)
 print('MAE: %.3f' % mae)
 ```
-
 ___
