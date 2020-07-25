@@ -1,7 +1,7 @@
 ___
 # General Forecasting Models
-> *TSA [Evaluation Metrics](https://github.com/juspreet51/templates/blob/master/tsa/jose/TSA_Evaluation_Metrics.ipynb)* and [Detailed Explanation](https://medium.com/@joydeepubuntu/common-metrics-for-time-series-analysis-f3ca4b29fe42) <br>
-> *ARMA [Family](https://github.com/juspreet51/templates/tree/master/TSA_Jose/08_General%20Forecasting%20Models) Models* <br>
+> *TSA [Evaluation Metrics NB](https://github.com/juspreet51/templates/blob/master/tsa/jose/TSA_Evaluation_Metrics.ipynb)* and [Detailed Explanation BLOG](https://medium.com/@joydeepubuntu/common-metrics-for-time-series-analysis-f3ca4b29fe42) <br>
+> *ARMA [Family NBs](https://github.com/juspreet51/templates/tree/master/tsa/jose) Models* <br>
 ____
 
 # Componenets of TSA
@@ -44,32 +44,51 @@ These (p,d,q) values can be achieved by using [Pyramid Auto-Arima](https://githu
 
 ___
 # 10 Common Steps in ARMA family models
+
+1) Load the dataset
+
+2) Visualize features
+
+3) Visualize TS componnets by calling 
+```python
+from statsmodels.tsa.seasonal import seasonal_decompose
 ```
-1) Load dataset
 
-2) Visualize feature to focus upon
+4) Auto-Arima for order of p,d,q
+```python
+stepwise_fit = auto_arima(df2['Inventories'], seasonal=False, trace=True)
+or
+stepwise_fit = auto_arima(df2['Inventories'], seasonal=True, m=7, trace=True)
+stepwise_fit.summary()
+```
 
-3) Call seasonal_decompose on the dataframe's feature and understand TS componnets
+5) Split into Train-Test model
+```python
+# Set one year for testing, rest of the years for training
+train, test = df2.iloc[:252], df2.iloc[252:];
+print(len(train));  print(len(test));
+```
 
-4) Use Pyramid Auto-Arima on the dataframe's to know the values of p,d,q (make seasonal=True if felt so in ETS decomposition)
-
-5) Training and Fitting, Model type and orders as per the Auto-Arima's suggestions
-
-6) Print total number of observation and then decide on Train-Test split
+6) Train-Fit the model
+```python
 trained_model = SARIMAX(train['feature_name'],order=(p,d,q),seasonal_order=(P,D,Q,m))
 fit_results = trained_model.fit()
 fit_results.summary()
+```
 
-7) Make predections using:
+7) Making predections:
 predictions = fit_results.predict(start=start_predections, end=end_predections, dynamic=False, typ="levels or linear").rename("Name of the model")
 
-8) Plot Test and predected values
+8) Plot TestDataset and predected_values values
+test_df.plot()
+predictions.plot()
 
 9) Call metrics like RMSE and R Sq on the predicted values
 from sklearn.metrics import r2_score
 from statsmodels.tools.eval_measures import rmse
 
 10) Make Unseen Future Forecasts
+```python
 fcst_model = SARIMAX(df['feature_name'],order=(p,d,q),seasonal_order=(P,D,Q,m))
 fcst_fit = fcst_model.fit()
 fcst_results = fcst_fit.predict(len(df),len(df)+11,typ='levels').rename('SARIMA(p,d,q)(P,D,Q,m) Forecast')
