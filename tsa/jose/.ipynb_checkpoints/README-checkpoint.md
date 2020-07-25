@@ -49,7 +49,7 @@ ___
 - <font color="green">__Median Absolute Error__</font> = median(|e<sub>t</sub>|)  <br>
 
 ## <font color="purple"><ins>Measures based on percentage errors</ins></font>
-The percentage error is given by: $p_{t}$ = 100*$e_{t}/y_{t}$
+The percentage error is given by: <img src="https://latex.codecogs.com/gif.latex?\inline&space;p_{t}&space;=&space;100*e_{t}/y_{t}" title="p_{t} = 100*e_{t}/y_{t}" />
 - <font color="green">__MAPE__</font> = mean(p<sub>t</sub>)
 - <font color="green">__MdAPE__</font> = median(p<sub>t</sub>)
 - <font color="green">__RMPSE__</font> = √(mean(p<sub>t</sub><sup>2</sup>))
@@ -61,16 +61,21 @@ The percentage error is given by: $p_{t}$ = 100*$e_{t}/y_{t}$
 - <font color="green">__Geometric Mean Relative Absolute Error (GMRAE)__</font> = gmean(|r<sub>t</sub>|)
 
 ## <font color="purple"><ins>Scaled errors</ins></font>
-### <font color="orange">Scaled error</font> is define as:  q<sub>t</sub> = $\frac {e_{t}}{ \frac{1}{n-1} \sum_{i=2}^n |Y_{i}-Y_{i-1}| } $
+### <font color="orange">Scaled error</font> is define as:  q_{t} = <img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac&space;{e_{t}}{&space;\frac{1}{n-1}&space;\sum_{i=2}^n&space;|Y_{i}-Y_{i-1}|&space;}" title="\frac {e_{t}}{ \frac{1}{n-1} \sum_{i=2}^n |Y_{i}-Y_{i-1}| }" />
 - <font color="green">__Mean Absolute Scaled Error (MASE)__</font> = mean(|qt |)
 - <font color="green">__Mean Scaled Error (MSE)__</font> = mean(qt)
 - <font color="green">__MdASE__</font> = median(|qt |)
 - <font color="green">__RMSSE__</font> = √MSE
  
-for more detail, refer to the [paper](https://www.sciencedirect.com/science/article/abs/pii/S0169207006000239)
+\*___For more detail, refer to the [paper](https://www.sciencedirect.com/science/article/abs/pii/S0169207006000239)___
 
 ___
-# <font color="purple"><b><ins>Python Model Validation Metrics:</ins></b></font>
+
+<details><summary><font color="purple"><h3><b>
+    Metrics Libraries For Model Validation:
+</b></h3></font></summary>
+
+    
 ```python
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 from statsmodels.tools.eval_measures import rmse
@@ -95,4 +100,8 @@ mape_val = mean_absolute_percentage_error(test_dataset, predictions)
 print(f'Mape Value: {mape_val}')
 ```
 <br> <br>
+    
+    
+</details>
+
 ___

@@ -44,7 +44,6 @@ def adf_test(series,title=''):
         print("Data has a unit root and is non-stationary")
 ```
 
-</p>
 </details>
 
 ___
@@ -54,9 +53,11 @@ ___
    Auto Arima:
 </b></h3></font></summary>    
     
-# Choosing ARIMA Orders : Auto-Arima
-> _p_ is the order of the AR model, i.e. number of lags included in the model
-> _d_ is the degree of Differencing, i.e. number of time data had its past value subtracted/differenced
+# <font color = "Teal">Choosing ARIMA Orders : Auto-Arima</font>
+> _p_ is the order of the AR model, i.e. number of lags included in the model <br>
+    
+> _d_ is the degree of Differencing, i.e. number of time data had its past value subtracted/differenced<br>
+
 > _q_ is the order of the Moving Average, i.e. size of the MA window
 
 <br>
@@ -90,22 +91,18 @@ step_wise_fit2 = auto_arima(df1['Thousands of Passengers'], start_p=0,start_q=0,
 step_wise_fit2.summary()
 ```
 
-</p>
 </details>
 
 ___
 
 
-<details><summary><font color="purple"><h3><b>Setting DatetimeIndex Frequency </b></h3></font></summary>    
+<font color="purple"><h3><b>df.index.freq</b></h3></font>
 
 > Most of the TSA will require index col to have afrequency or offset alias<br>
 > List of time series offset aliases in pandas [official doc]('http://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases') 
 
 ___
 
-
-</p>
-</details>
 
 # <font color="purple">__<ins>Outlier Detection and Treatment</ins>:__</font>
 
@@ -177,7 +174,6 @@ input_df
 
 input_df.boxplot(column=['sales']);
 ```
-</p>
 </details>
 
 
@@ -203,8 +199,11 @@ yhat = iso.fit_predict(X_train)
 mask = yhat != -1
 X_train, y_train = X_train[mask, :], y_train[mask]
 ```
+    
+<details><summary><font color="green"><h5><b>
+    ISOLATION FOREST CODE
+</b></h5></font></summary>
 
-> __COMPLETE CODE__
 
 ```python
 # evaluate model performance with outliers removed using isolation forest
@@ -241,9 +240,9 @@ yhat = model.predict(X_test)
 mae = mean_absolute_error(y_test, yhat)
 print('MAE: %.3f' % mae)
 ```
+</details>
 
-
-
+___
 <font color="teal">__2.2)Minimum Covariance Determinant__</font> <br>
 - If the input variables have a Gaussian distribution, then simple statistical methods can be used to detect outliers
 - If the dataset has two input variables and both are Gaussian, then the feature space forms a multi-dimensional Gaussian and knowledge of this distribution can be used to identify values far from the distribution.
@@ -264,7 +263,11 @@ mask = yhat != -1
 X_train, y_train = X_train[mask, :], y_train[mask]
 ```
 
-> __COMPLETE CODE__
+<details><summary><font color="green"><h5><b>
+    Minimum Covariance Determinant CODE
+</b></h5></font></summary>
+    
+    
 ```python
 # evaluate model performance with outliers removed using elliptical envelope
 from pandas import read_csv
@@ -301,6 +304,10 @@ mae = mean_absolute_error(y_test, yhat)
 print('MAE: %.3f' % mae)
 ```
 
+</details>
+
+___
+
 
 <font color="teal">__2.3)One-Class SVM__</font> <br>
 - When modeling one class, the algorithm captures the density of the majority class and classifies examples on the extremes of the density function as outliers. This modification of SVM is referred to as One-Class SVM
@@ -313,7 +320,12 @@ ee = OneClassSVM(nu=0.01)
 yhat = ee.fit_predict(X_train)
 ```
 
-> __COMPLETE CODE__
+
+<details><summary><font color="green"><h5><b>
+    One-Class SVM CODE
+</b></h5></font></summary>
+
+    
 ```python
 # evaluate model performance with outliers removed using one class SVM
 from pandas import read_csv
@@ -349,8 +361,10 @@ yhat = model.predict(X_test)
 mae = mean_absolute_error(y_test, yhat)
 print('MAE: %.3f' % mae)
 ```
-
-</p>
+</details>
+    
+___
+    
 </details>
 
 
