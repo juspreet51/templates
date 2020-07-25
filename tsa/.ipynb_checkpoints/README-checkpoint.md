@@ -99,7 +99,7 @@ ___
 - Find the upper Range = Q3 + (1.5 * IQR) <br>
 
 #### <font color="Red">__1.1)Outlier Identification and Removal__</font>
-<details><summary>View</summary>
+
 
 ```python
 Q1 = input_df['sum_gmv'].quantile(0.25)
@@ -110,14 +110,13 @@ input_df_treated = input_df[~((input_df < (Q1 - 1.5 * IQR)) |(input_df > (Q3 + 1
 input_df_treated.head()
 ```
 
-</details>
 
 
 
 
 #### <font color="Red">__1.2)Outlier Identification and Imputation__</font>
 
-<details><summary>View</summary>
+
 
 <font color="teal">__1.2.1)Identification__</font> <br>
 ```python
@@ -161,7 +160,7 @@ input_df
 input_df.boxplot(column=['sales']);
 ```
 
-</details>
+
 
 
 
