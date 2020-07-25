@@ -1,25 +1,87 @@
 # <font color="gold">__Templates__</font>
 Collection of notebooks, code templates and other usefull resources collated during learning (with the seasoning of some really awkward and funny comments and rants)
 
-## <font color="purple"><ins>Conda Environment Creation and Exporting</ins></font>
+## <font color="purple"><b><ins>Monthly Plots</ins></b></font>
+```python
+from statsmodels.graphics.tsaplots import month_plot,quarter_plot
 ```
-> conda info
-> conda update conda
-> conda install PACKAGENAME 
-> conda update PACKAGENAME 
-
-> conda create --name ENVNAME python=3.6   # Here new environment is named ENVNAME, install Python 3.6
-> conda create --clone ENVNAME --name NEWENV # Exact copy of existing environment
-> conda env list 
-> conda list --name ENVNAME
-> conda activate env_name
-
-> conda env export --name ENVNAME > envname.yml
-> conda env create --file envname.ym
-> conda env create # Create an environment from the file named environment.yml in the current director
-
-> conda remove --name ENVNAME --all # Delete an entire environment
+> ### More on resampling data: [GeeksForGeeks](https://www.geeksforgeeks.org/python-pandas-dataframe-resample/)
+```python
+>monthly_resampled_data = df.close.resample('M').mean() <br>
+>weekly_resampled_data = df.open.resample('W').mean() <br>
+>Quarterly_resampled_data = df.open.resample('Q').mean() <br>
 ```
+
+## <font color="purple"><b><ins>ADF Test:</ins></b></font>
+```python
+from statsmodels.tsa.stattools import adfuller
+def adf_test(series,title=''):
+    """
+    Pass in a time series and an optional title, returns an ADF report
+    """
+    print(f'Augmented Dickey-Fuller Test: {title}')
+    result = adfuller(series.dropna(),autolag='AIC') # .dropna() handles differenced data
+    
+    labels = ['ADF test statistic','p-value','# lags used','# observations']
+    out = pd.Series(result[0:4],index=labels)
+
+    for key,val in result[4].items():
+        out[f'critical value ({key})']=val
+        
+    print(out.to_string())          # .to_string() removes the line "dtype: float64"
+    
+    series.plot(figsize=(18,9))
+    if result[1] <= 0.05:
+        print("\nStrong evidence against the null hypothesis")
+        print("Reject the null hypothesis")
+        
+        print("Data has no unit root and is stationary")
+    else:
+        print("\nWeak evidence against the null hypothesis")
+        print("Fail to reject the null hypothesis")
+        
+        print("Data has a unit root and is non-stationary")
+```
+
+
+## <font color="purple"><b><ins>Auto Arima:</ins></b></font>
+# Choosing ARIMA Orders : Auto-Arima
+> *p* is the order of the AR model, i.e. number of lags included in the model
+<br>
+> *d* is the degree of Differencing, i.e. number of time data had its past value subtracted/differenced
+<br>
+> *q* is the order of the Moving Average, i.e. size of the MA window
+
+The main priority of this step is to pick the order of AR and MA compnonent, and then I order if required. It can be done by two ways:
+- **Manually via ACF-PACF plots**: If the AC plots shows +ve Auto-Correlation at the very first lag, then it usggests to us AR terms in relation to lags, MA terms for -ve Auto-Correlation
+- **Grid Search**: At times it could be really difficult to read PACF/ACF plots, which probably will add human error, so it is better to perform fird search across p,d,q values to find the most optimal choice
+
+This is done by making use of ***PyramidARIMA*** library, which runs on top of statsmodel's ARIMA. <br>
+It searches across various combination of p,d,q and P,D,Q and returns the best combination. This is achieved by minimising ``` Akaike Information Criterion (AIC) ```  value.
+> <img src="https://latex.codecogs.com/gif.latex?AIC&space;=&space;2k&space;-&space;2ln(\hat{L})" title="AIC = 2k - 2ln(\hat{L})" /> <br>
+> Where _k_ number of params and *L* is the value of MLE <br>
+**ARMA** is defined as <img src="https://latex.codecogs.com/gif.latex?(1-\sum_{i=1}^p&space;\alpha_{i}L^i)X_{t}&space;=&space;(1&plus;\sum_{i=1}^q&space;\Theta_{i}L^i)\epsilon_{t}" title="(1-\sum_{i=1}^p \alpha_{i}L^i)X_{t} = (1+\sum_{i=1}^q \Theta_{i}L^i)\epsilon_{t}" /> <br>
+**ARIMA** is defined as <img src="https://latex.codecogs.com/gif.latex?(1-\sum_{i=1}^p&space;\Phi&space;^iL^i)&space;(1-L)^d&space;X_{t}&space;=&space;(1&plus;\sum_{i=1}^q&space;\theta_{i}&space;L^i)\epsilon_{t}" title="(1-\sum_{i=1}^p \Phi ^iL^i) (1-L)^d X_{t} = (1+\sum_{i=1}^q \theta_{i} L^i)\epsilon_{t}" /> <br>
+
+
+
+### <font color="yellow"><b>Auto-Arima Code For Non-Seasonal Data:</b></font>
+```python
+from pmdarima import auto_arima
+step_wise_fit = auto_arima(df2['Births'], start_p=0,start_q=0, seasonal=False, trace=True)
+#  Choosing the best combinaiton:
+step_wise_fit.summary() # Smallest AIC
+```
+
+### <font color="yellow"><b>Auto-Arima Code For Seasonal Data:</b></font>
+```python
+# m is time-period for seasonal differencing, 
+# i.e. m=1 for annual data, m=4 for quaterly data, m=7 for daily data,  m=12 for monthly data, m=52 for weekly data
+step_wise_fit2 = auto_arima(df1['Thousands of Passengers'], start_p=0,start_q=0, seasonal=True, m=12, trace=True)
+step_wise_fit2.summary()
+```
+
+
 ## <font color="purple"><ins>Setting a DatetimeIndex Frequency</ins></font>
 > Most of the TSA will require you to make sure your index col (most of the time it will be a sequential timestamp) to be in its correct frequency or offset alias<br>
 A full list of time series offset aliases can be found in the <a href='http://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases'>official doc</a>.

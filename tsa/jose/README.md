@@ -1,3 +1,7 @@
+# <font color="gold">__TSA By Jose__</font>
+
+
+
 # [Another look at measures of forecast accuracy- Rob J.Hyndman and Anne B.Koehlerb1](https://www.sciencedirect.com/science/article/abs/pii/S0169207006000239)
 
 ## <font color="yellow">Types of Validation Procedures</font>
@@ -69,7 +73,7 @@ The percentage error is given by: $p_{t}$ = 100*$e_{t}/y_{t}$
 for more detail, refer to the [paper](https://www.sciencedirect.com/science/article/abs/pii/S0169207006000239)
 
 ___
-# <font color="purple">__<ins>Python Model Validation Metrics</ins>:__</font>
+# <font color="purple"><b><ins>Python Model Validation Metrics:</ins></b></font>
 ```python
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 from statsmodels.tools.eval_measures import rmse
