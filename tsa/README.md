@@ -12,7 +12,10 @@ from statsmodels.graphics.tsaplots import month_plot,quarter_plot
 >Quarterly_resampled_data = df.open.resample('Q').mean() <br>
 ```
 
-## <font color="purple"><b><ins>ADF Test:</ins></b></font>
+<details><summary><font color="purple"><h3><b>
+    ADF Test:
+</b></h3></font></summary>    
+    
 ```python
 from statsmodels.tsa.stattools import adfuller
 def adf_test(series,title=''):
@@ -34,17 +37,23 @@ def adf_test(series,title=''):
     if result[1] <= 0.05:
         print("\nStrong evidence against the null hypothesis")
         print("Reject the null hypothesis")
-        
         print("Data has no unit root and is stationary")
     else:
         print("\nWeak evidence against the null hypothesis")
         print("Fail to reject the null hypothesis")
-        
         print("Data has a unit root and is non-stationary")
 ```
 
+</p>
+</details>
 
-## <font color="purple"><b><ins>Auto Arima:</ins></b></font>
+___
+
+
+<details><summary><font color="purple"><h3><b>
+   Auto Arima:
+</b></h3></font></summary>    
+    
 # Choosing ARIMA Orders : Auto-Arima
 > _p_ is the order of the AR model, i.e. number of lags included in the model
 > _d_ is the degree of Differencing, i.e. number of time data had its past value subtracted/differenced
@@ -65,7 +74,7 @@ It searches across various combination of p,d,q and P,D,Q and returns the best c
 
 
 
-### <font color="yellow"><b>Auto-Arima Code For Non-Seasonal Data:</b></font>
+### <font color="purple"><b>Auto-Arima Code For Non-Seasonal Data:</b></font>
 ```python
 from pmdarima import auto_arima
 step_wise_fit = auto_arima(df2['Births'], start_p=0,start_q=0, seasonal=False, trace=True)
@@ -73,7 +82,7 @@ step_wise_fit = auto_arima(df2['Births'], start_p=0,start_q=0, seasonal=False, t
 step_wise_fit.summary() # Smallest AIC
 ```
 
-### <font color="yellow"><b>Auto-Arima Code For Seasonal Data:</b></font>
+### <font color="purple"><b>Auto-Arima Code For Seasonal Data:</b></font>
 ```python
 # m is time-period for seasonal differencing, 
 # i.e. m=1 for annual data, m=4 for quaterly data, m=7 for daily data,  m=12 for monthly data, m=52 for weekly data
@@ -81,15 +90,30 @@ step_wise_fit2 = auto_arima(df1['Thousands of Passengers'], start_p=0,start_q=0,
 step_wise_fit2.summary()
 ```
 
-
-## <font color="purple"><ins>Setting a DatetimeIndex Frequency</ins></font>
-> Most of the TSA will require you to make sure your index col (most of the time it will be a sequential timestamp) to be in its correct frequency or offset alias<br>
-A full list of time series offset aliases can be found in the <a href='http://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases'>official doc</a>.
+</p>
+</details>
 
 ___
+
+
+<details><summary><font color="purple"><h3><b>
+  Setting DatetimeIndex Frequency
+</b></h3></font></summary>    
+
+> Most of the TSA will require index col to have afrequency or offset alias<br>
+> List of time series offset aliases in pandas [official doc]('http://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases') 
+
+___
+
+
+</p>
+</details>
+
 # <font color="purple">__<ins>Outlier Detection and Treatment</ins>:__</font>
 
-<details><summary><font color="yellow"><h3><b>Method1: Interquartile Range Method</b></h3></font></summary>
+<details><summary><font color="yellow"><h3><b>
+    Method1: Interquartile Range Method
+</b></h3></font></summary>
 - Calculate Q1 ( the first Quarter) <br>
 - Calculate Q3 ( the third Quartile) <br>
 - Find IQR = (Q3 - Q1) <br>
