@@ -88,10 +88,8 @@ A full list of time series offset aliases can be found in the <a href='http://pa
 
 ___
 # <font color="purple">__<ins>Outlier Detection and Treatment</ins>:__</font>
-### __1) Interquartile Range Method__
-### __2) Automatic Outlier Detection__
 
-### <font color="yellow">__Method1: Interquartile Range Method__</font>
+<details><summary><font color="yellow"><h3><b>Method1: Interquartile Range Method</b></h3></font></summary>
 - Calculate Q1 ( the first Quarter) <br>
 - Calculate Q3 ( the third Quartile) <br>
 - Find IQR = (Q3 - Q1) <br>
@@ -115,9 +113,6 @@ input_df_treated.head()
 
 
 #### <font color="Red">__1.2)Outlier Identification and Imputation__</font>
-
-
-
 <font color="teal">__1.2.1)Identification__</font> <br>
 ```python
 def outlier_detection(datacolumn):
@@ -159,13 +154,15 @@ input_df
 
 input_df.boxplot(column=['sales']);
 ```
+</p>
+</details>
 
 
 
 
+<details><summary><font color="yellow"><h3><b>Method2: Automatic Outlier Detection</b></h3></font></summary>
+<p>
 
-
-### <font color="yellow">__Method2:Automatic Outlier Detection__</font>
 <font color="teal">__2.1)Isolation Forest__</font> <br>
 - iForest for short, is a tree-based anomaly detection algorithm
 - Contamination is used to help estimate the number of outliers in the dataset
@@ -329,4 +326,9 @@ yhat = model.predict(X_test)
 mae = mean_absolute_error(y_test, yhat)
 print('MAE: %.3f' % mae)
 ```
+
+</p>
+</details>
+
+
 ___
