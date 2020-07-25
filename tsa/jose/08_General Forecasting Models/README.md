@@ -40,7 +40,7 @@ ___
 > d= order of differencing and <br>
 > q= order of moving avg
 
-These (p,d,q) values can be achieved by using [Pyramid Auto-Arima](https://github.com/juspreet51/templates/blob/master/TSA_Jose/08_General%20Forecasting%20Models/64_ARIMA.ipynb) library
+These (p,d,q) values can be achieved by using [Pyramid Auto-Arima](https://github.com/juspreet51/templates/tree/master/tsa/jose/08_General%20Forecasting%20Models#arima) library
 
 ___
 # 10 Common Steps in ARMA family models

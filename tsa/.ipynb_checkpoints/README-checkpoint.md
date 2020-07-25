@@ -46,9 +46,9 @@ def adf_test(series,title=''):
 
 ## <font color="purple"><b><ins>Auto Arima:</ins></b></font>
 # Choosing ARIMA Orders : Auto-Arima
-> *p* is the order of the AR model, i.e. number of lags included in the model
+> _p_ is the order of the AR model, i.e. number of lags included in the model
 <br>
-> *d* is the degree of Differencing, i.e. number of time data had its past value subtracted/differenced
+> _d_ is the degree of Differencing, i.e. number of time data had its past value subtracted/differenced
 <br>
 > *q* is the order of the Moving Average, i.e. size of the MA window
 
