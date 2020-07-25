@@ -96,9 +96,7 @@ step_wise_fit2.summary()
 ___
 
 
-<details><summary><font color="purple"><h3><b>
-  Setting DatetimeIndex Frequency
-</b></h3></font></summary>    
+<details><summary><font color="purple"><h3><b>Setting DatetimeIndex Frequency </b></h3></font></summary>    
 
 > Most of the TSA will require index col to have afrequency or offset alias<br>
 > List of time series offset aliases in pandas [official doc]('http://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases') 
@@ -114,6 +112,7 @@ ___
 <details><summary><font color="yellow"><h3><b>
     Method1: Interquartile Range Method
 </b></h3></font></summary>
+    
 - Calculate Q1 ( the first Quarter) <br>
 - Calculate Q3 ( the third Quartile) <br>
 - Find IQR = (Q3 - Q1) <br>

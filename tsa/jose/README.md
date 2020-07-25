@@ -21,7 +21,7 @@
 > here, e<sub>t</sub> = y<sub>i</sub> - ŷ<sub>i</sub> is the ***residual component***
 
 <br> <br> 
-<b> Mean Squared Error </b>: $ \frac{1}{n} \sum_{i=1}^n$ (y<sub>i</sub> - ŷ<sub>i</sub>$)^2 $
+<b> Mean Squared Error </b>: <img src="https://latex.codecogs.com/gif.latex?\frac{1}{n}&space;\sum_{i=1}^n&space;(y_{i}&space;-&space;\hat{y}_{i})^2" title="\frac{1}{n} \sum_{i=1}^n (y_{i} - \hat{y}_{i})^2" />
 
 <b> Root Mean Squared Error </b>:
 $\sqrt{\frac{1}{n} \sum_{i=1}^n (y_{i} - \hat y_{i})^2}$
