@@ -161,6 +161,7 @@ ee = EllipticEnvelope(contamination=0.01)
 yhat = ee.fit_predict(X_train)
 ```
 <br>
+
 - Once identified, we can remove the outliers from the training dataset
 ```python
 # select all rows that are not outliers
