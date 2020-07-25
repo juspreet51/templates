@@ -100,14 +100,14 @@ input_df.boxplot(column=['sales']);
 iso = IsolationForest(contamination=0.1)
 yhat = iso.fit_predict(X_train)
 ```
-<br>
+
+
 - Once identified, we can remove the outliers from the training dataset
 ```python
 # select all rows that are not outliers
 mask = yhat != -1
 X_train, y_train = X_train[mask, :], y_train[mask]
 ```
-<br><br>
 
 > __COMPLETE CODE__
 
