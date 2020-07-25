@@ -21,19 +21,16 @@
 > here, e<sub>t</sub> = y<sub>i</sub> - ŷ<sub>i</sub> is the ***residual component***
 
 <br> <br> 
-<b> Mean Squared Error </b>: <img src="https://latex.codecogs.com/gif.latex?\frac{1}{n}&space;\sum_{i=1}^n&space;(y_{i}&space;-&space;\hat{y}_{i})^2" title="\frac{1}{n} \sum_{i=1}^n (y_{i} - \hat{y}_{i})^2" />
+<b> Mean Squared Error </b>: <img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{1}{n}&space;\sum_{i=1}^n&space;(y_{i}&space;-&space;\hat{y}_{i})^2" title="\frac{1}{n} \sum_{i=1}^n (y_{i} - \hat{y}_{i})^2" />
 
-<b> Root Mean Squared Error </b>:
-$\sqrt{\frac{1}{n} \sum_{i=1}^n (y_{i} - \hat y_{i})^2}$
+<b> Root Mean Squared Error </b>: <img src="https://latex.codecogs.com/gif.latex?\inline&space;\sqrt{\frac{1}{n}&space;\sum_{i=1}^n&space;(y_{i}&space;-&space;\hat&space;y_{i})^2}" title="\sqrt{\frac{1}{n} \sum_{i=1}^n (y_{i} - \hat y_{i})^2}" />
 
-<b>Mean Absolute Error</b>:
-$ \frac{1}{n} \sum_{i=1}^n$ | y<sub>i</sub> - ŷ<sub>i</sub> |
+<b>Mean Absolute Error</b>: <img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{1}{n}&space;\sum_{i=1}^n&space;|&space;y_{i}&space;-&space;\hat{y}_{i}&space;|" title="\frac{1}{n} \sum_{i=1}^n | y_{i} - \hat{y}_{i} |" />
 
 <b> Mean Absolute Percentage Error </b>: 
-$ \frac{1}{n} \sum_{i=1}^n \left\lvert{\frac{y_{i}-\hat y}{y_{i}}}\right\rvert $ or 
-$ \frac{1}{n} \sum_{i=1}^n \left\lvert{\frac{Act_{i}- F_{i}}{Act_{i}}}\right\rvert $
+<img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{1}{n}&space;\sum_{i=1}^n&space;\left\lvert{\frac{y_{i}-\hat&space;y}{y_{i}}}\right\rvert" title="\frac{1}{n} \sum_{i=1}^n \left\lvert{\frac{y_{i}-\hat y}{y_{i}}}\right\rvert" /> or <img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{1}{n}&space;\sum_{i=1}^n&space;\left\lvert{\frac{Act_{i}-&space;F_{i}}{Act_{i}}}\right\rvert" title="\frac{1}{n} \sum_{i=1}^n \left\lvert{\frac{Act_{i}- F_{i}}{Act_{i}}}\right\rvert" />
 
-<b>$R^2$ Squared</b>: How fit is the curve
+<b><img src="https://latex.codecogs.com/gif.latex?\inline&space;R^2" title="R^2" /> Squared</b>: How fit is the curve
 
 ___python libs import___:
 ```
