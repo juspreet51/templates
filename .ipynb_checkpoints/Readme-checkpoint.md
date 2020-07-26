@@ -1,26 +1,28 @@
-# Dillinger's GitHub markdown basic editing styles and tips
+# GitHub markdown basic editing styles and tips
 ___
 
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
+[![N|Solid](https://cdn.iconscout.com/icon/free/png-64/javascript-23-1174949.png)](https://github.com/juspreet51)
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
+    
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://www.linkedin.com/in/juspreet51/)
 
 ___
 
 ## Markdown extras
 
 ### GFM task list
-
 - [x] GFM task list 1
 - [x] GFM task list 2
 - [ ] GFM task list 3
     - [ ] GFM task list 3-1
-    - [ ] GFM task list 3-2
+    - [x] GFM task list 3-2
     - [ ] GFM task list 3-3
 - [ ] GFM task list 4
-    - [ ] GFM task list 4-1
+    - [x] GFM task list 4-1
     - [ ] GFM task list 4-2
+        - [ ] GFM task list 4-2-1
+        - [x] GFM task list 4-2-2
 
 ### Emoji mixed :smiley:
 
@@ -35,8 +37,8 @@ ___
 - [ ] [ ]this is an incomplete item :fa-star: :fa-gear:;
     - [ ] :smiley: this is an incomplete item [test link](#) :fa-star: :fa-gear:;
     - [ ] :smiley: this is  :fa-star: :fa-gear: an incomplete item [test link](#);
-            
-### <font color="gold">__Graphical Symbols:__</font> use code within paranthesis
+___            
+### <font color="gold">__Unicode Hex Character Code:__</font> Use code within paranthesis
 RED APPLE (\&#x1F34E;) -> 🍎 <br>
 GREEN APPLE (\&#x1F34F;) -> 🍏 <br>
 BLUE HEART (\&#x1F499;) -> 💙 <br>
@@ -56,4 +58,9 @@ UP-POINTING RED TRIANGLE (\&#x1F53A;) -> 🔺 <br>
 DOWN-POINTING RED TRIANGLE (\&#x1F53B;) -> 🔻 <br>
 UP-POINTING SMALL RED TRIANGLE (\&#x1F53C;) -> 🔼 <br>
 DOWN-POINTING SMALL RED TRIANGLE (\&#x1F53D;) -> 🔽 <br>
+___
+
+
+
+
 
