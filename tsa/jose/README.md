@@ -4,7 +4,7 @@
 
 # [Another look at measures of forecast accuracy](https://www.sciencedirect.com/science/article/abs/pii/S0169207006000239)- Rob J.Hyndman and Anne B.Koehlerb1
 
-<details><summary><font color="purple"><h3><b>
+<details><summary><font color="gold"><h3><b>
     Types of Validation Procedures:
 </b></h3></font></summary>
 
@@ -88,7 +88,7 @@ The percentage error is given by: <img src="https://latex.codecogs.com/gif.latex
 
 ___
 
-<details><summary><font color="purple"><h3><b>
+<details><summary><font color="gold"><h3><b>
     Metrics Libraries For Model Validation:
 </b></h3></font></summary>
 
@@ -122,3 +122,22 @@ print(f'Mape Value: {mape_val}')
 </details>
 
 ___
+
+<details><summary><font color="gold"><h3><b>
+    TensorBoard:
+</b></h3></font></summary>
+
+```python
+>>> import tensorflow as tf
+>>> import datetime
+
+>>> NAME = "lstm_name"
+
+>>> log_dir = "logs_fit_" + datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
+>>> tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
+
+    logs_fit_2020_07_29_19_35_35
+# open tensorboard: %tensorboard --logdir logs/fit
+```
+
+</details>
