@@ -33,7 +33,7 @@
 <b>sMAPE</b>: 
 <br>
 <img src="https://latex.codecogs.com/gif.latex?\frac{100\%}{n}&space;\sum_{t=1}^n&space;\frac{|F_{t}-A_{t}|}{(|A_{t}|&plus;|F_{t}|)/2}" title="\frac{100\%}{n} \sum_{t=1}^n \frac{|F_{t}-A_{t}|}{(|A_{t}|+|F_{t}|)/2}" /> 
-### Reason for divison by 2 in sMAPE is justified by [Spyros Makridakis]("https://sci-hub.tw/10.1016/0169-2070(93)90079-3")
+_Reason for divison by 2 in sMAPE is justified by [Spyros Makridakis]("https://sci-hub.tw/10.1016/0169-2070(93)90079-3")_
 MAPE as an accuracy measure can be influenced by some problems:	
 - Equal errors above the actual value result in a greater APE (Absolute Percentage Error) than those below the actual value. For instance, when the actual value is 150 and the forecast is 100 (an error of 50) the APE(|(Act-Fcst/Act)|) is: 33%
 - However, when the actual is 100 and the forecast 150 the APE is 50%
