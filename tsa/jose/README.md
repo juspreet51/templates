@@ -4,7 +4,12 @@
 
 # [Another look at measures of forecast accuracy](https://www.sciencedirect.com/science/article/abs/pii/S0169207006000239)- Rob J.Hyndman and Anne B.Koehlerb1
 
-## <font color="yellow">Types of Validation Procedures</font>
+<details><summary><font color="purple"><h3><b>
+    Types of Validation Procedures:
+</b></h3></font></summary>
+
+
+## <font color="yellow"></font>
 <font color="green">__MAPE:__</font> Mean Absolute Percentage Error <br>
 <font color="green">__MdAPE:__</font> Median Absolute Percentage Error <br>
 <font color="green">__sMAPE:__</font> Symmetric Mean Absolute Percentage Error <br>
@@ -31,7 +36,7 @@
 <img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{1}{n}&space;\sum_{i=1}^n&space;\left\lvert{\frac{y_{i}-\hat&space;y}{y_{i}}}\right\rvert" title="\frac{1}{n} \sum_{i=1}^n \left\lvert{\frac{y_{i}-\hat y}{y_{i}}}\right\rvert" /> or <img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{1}{n}&space;\sum_{i=1}^n&space;\left\lvert{\frac{Act_{i}-&space;F_{i}}{Act_{i}}}\right\rvert" title="\frac{1}{n} \sum_{i=1}^n \left\lvert{\frac{Act_{i}- F_{i}}{Act_{i}}}\right\rvert" />
 
 <b>sMAPE</b>:  <br>
-<img src="./imgs/sMAPE_formula_00.png" title="\frac{100\%}{n} \sum_{t=1}^n \frac{|F_{t}-A_{t}|}{(|A_{t}|+|F_{t}|)/2}" /> <br>
+<img src="./imgs/sMAPE_formula_00.png" title="\frac{100\%}{n} \sum_{t=1}^n \frac{|F_{t}-A_{t}|}{(|A_{t}|+|F_{t}|)/2}" />
 
 <br> _Reason for divison by 2 in sMAPE is justified by [Spyros Makridakis]("https://sci-hub.tw/10.1016/0169-2070(93)90079-3")_
 MAPE as an accuracy measure can be influenced by some problems:	
@@ -76,6 +81,8 @@ The percentage error is given by: <img src="https://latex.codecogs.com/gif.latex
 - <font color="green">__Mean Scaled Error (MSE)__</font> = mean(qt)
 - <font color="green">__MdASE__</font> = median(|qt |)
 - <font color="green">__RMSSE__</font> = √MSE
+
+</details>
  
 \*___For more detail, refer to the [paper](https://www.sciencedirect.com/science/article/abs/pii/S0169207006000239)___
 
