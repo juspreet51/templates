@@ -30,8 +30,16 @@
 <b> Mean Absolute Percentage Error </b>: 
 <img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{1}{n}&space;\sum_{i=1}^n&space;\left\lvert{\frac{y_{i}-\hat&space;y}{y_{i}}}\right\rvert" title="\frac{1}{n} \sum_{i=1}^n \left\lvert{\frac{y_{i}-\hat y}{y_{i}}}\right\rvert" /> or <img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{1}{n}&space;\sum_{i=1}^n&space;\left\lvert{\frac{Act_{i}-&space;F_{i}}{Act_{i}}}\right\rvert" title="\frac{1}{n} \sum_{i=1}^n \left\lvert{\frac{Act_{i}- F_{i}}{Act_{i}}}\right\rvert" />
 
-<b>sMAPE</b>: The MAPE and MdAPE also have the disadvan-tage that they put a heavier penalty on positive errorsthan on negative errors. This observation led to theuse of the so-calledbsymmetricQmeasures <br>
+<b>sMAPE</b>: 
+<br>
 <img src="https://latex.codecogs.com/gif.latex?\frac{100\%}{n}&space;\sum_{t=1}^n&space;\frac{|F_{t}-A_{t}|}{(|A_{t}|&plus;|F_{t}|)/2}" title="\frac{100\%}{n} \sum_{t=1}^n \frac{|F_{t}-A_{t}|}{(|A_{t}|+|F_{t}|)/2}" /> 
+### Reason for divison by 2 in sMAPE is justified by [Spyros Makridakis]("https://sci-hub.tw/10.1016/0169-2070(93)90079-3")
+MAPE as an accuracy measure can be influenced by some problems:	
+- Equal errors above the actual value result in a greater APE (Absolute Percentage Error) than those below the actual value. For instance, when the actual value is 150 and the forecast is 100 (an error of 50) the APE(|(Act-Fcst/Act)|) is: 33%
+- However, when the actual is 100 and the forecast 150 the APE is 50%
+- This problem can be easily corrected by dividing the error (Act - Fcst) by the average of both Act and Fcst i.e.  (Act + Fcst)/2
+- The above formula will provide the APE of 40% in both cases
+
 
 
 <b><img src="https://latex.codecogs.com/gif.latex?\inline&space;R^2" title="R^2" /> Squared</b>: How fit is the curve
