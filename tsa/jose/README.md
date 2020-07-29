@@ -31,7 +31,7 @@
 <img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{1}{n}&space;\sum_{i=1}^n&space;\left\lvert{\frac{y_{i}-\hat&space;y}{y_{i}}}\right\rvert" title="\frac{1}{n} \sum_{i=1}^n \left\lvert{\frac{y_{i}-\hat y}{y_{i}}}\right\rvert" /> or <img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{1}{n}&space;\sum_{i=1}^n&space;\left\lvert{\frac{Act_{i}-&space;F_{i}}{Act_{i}}}\right\rvert" title="\frac{1}{n} \sum_{i=1}^n \left\lvert{\frac{Act_{i}- F_{i}}{Act_{i}}}\right\rvert" />
 
 <b>sMAPE</b>: The MAPE and MdAPE also have the disadvan-tage that they put a heavier penalty on positive errorsthan on negative errors. This observation led to theuse of the so-calledbsymmetricQmeasures <br>
-<img src="https://latex.codecogs.com/gif.latex?\frac{100\%}{n}&space;\sum_{t=1}^n&space;\frac{|F_{t}-A_{t}|}{(|A_{t}|&plus;|F_{t}|)/2}" title="\frac{100\%}{n} \sum_{t=1}^n \frac{|F_{t}-A_{t}|}{(|A_{t}|+|F_{t}|)/2}" />
+<img src="https://latex.codecogs.com/gif.latex?\frac{100\%}{n}&space;\sum_{t=1}^n&space;\frac{|F_{t}-A_{t}|}{(|A_{t}|&plus;|F_{t}|)/2}" title="\frac{100\%}{n} \sum_{t=1}^n \frac{|F_{t}-A_{t}|}{(|A_{t}|+|F_{t}|)/2}" /> 
 
 
 <b><img src="https://latex.codecogs.com/gif.latex?\inline&space;R^2" title="R^2" /> Squared</b>: How fit is the curve
