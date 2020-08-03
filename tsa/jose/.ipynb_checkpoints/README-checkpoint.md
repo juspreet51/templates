@@ -45,13 +45,17 @@ MAPE as an accuracy measure can be influenced by some problems:
 - This problem can be easily corrected by dividing the error (Act - Fcst) by the average of both Act and Fcst i.e.  (Act + Fcst)/2
 - The above formula will provide the APE of 40% in both cases
 
-<b><img src="https://latex.codecogs.com/gif.latex?\inline&space;R^2" title="R^2" /> Squared</b>: How fit is the curve
+<b><img src="https://latex.codecogs.com/gif.latex?\inline&space;R^2" title="R^2" /> Squared</b>: Is a measure of how close each datapoint fits the regression line.<br>
+So it tells us, how well the regression line predicts the actual value
 
 ___python libs import___:
 ```
 from sklearn.metrics import mean_absolute_error, median_absolute_error, mean_squared_error,r2_score
 ```
 
+
+    
+___  
 __Detailed explanation and Formulas in [Notebook](https://github.com/juspreet51/templates/blob/master/tsa/jose/TSA_Evaluation_Metrics.ipynb) and [Blog](https://medium.com/@joydeepubuntu/common-metrics-for-time-series-analysis-f3ca4b29fe42)__
 ___
 
